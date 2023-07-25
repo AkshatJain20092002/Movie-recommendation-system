@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Recommended Movies</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            line-height: 1.6;
+            margin: 0;
+            padding: 0;
+            background-color: #f7f7f7;
+            background-image: url("https://t3.ftcdn.net/jpg/03/08/67/88/360_F_308678888_QHlfkRbBBIBaIL1exkzsmi9U1yJ7oVG4.jpg");
+            background-size: 100% 200%;
+            transition: background-image 1s ease;
+        }
+
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        h1 {
+            text-align: center;
+            margin-bottom: 30px;
+            color: #007BFF;
+        }
+
+        ul {
+            list-style: none;
+            padding: 0;
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+        }
+
+        li {
+            width: 200px;
+            margin: 10px;
+            text-align: center;
+            position: relative;
+        }
+
+        h2 {
+            margin: 5px 0;
+            font-size: 18px;
+            color: #333;
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            background-color: rgba(0, 0, 0, 0.7);
+            padding: 5px 10px;
+            border-radius: 5px;
+            width: 100%;
+            opacity: 0;
+            color: white;
+            transition: opacity 0.3s ease;
+        }
+
+        li:hover h2 {
+            opacity: 1;
+        }
+
+        img {
+            width: 100%;
+            max-width: 150px;
+            height: auto;
+            border-radius: 5px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            border: 2px solid #fff; 
+            margin: 10px;
+            transition: transform 0.3s ease;
+        }
+
+
+        li:hover img {
+            transform: scale(1.1);
+        }
+    </style>
+</head>
+<body>
+    <h1>Recommended Movies for {{ movie_name }}</h1>
+    <div class="container">
+        <ul>
+            {% for name, poster in movie_data %}
+            <li>
+                <img src="{{ poster }}" alt="{{ name }}">
+                <h2>{{ name }}</h2>
+            </li>
+            {% endfor %}
+        </ul>
+    </div>
+</body>
+</html>
